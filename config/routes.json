@@ -1,0 +1,9 @@
+[
+  {
+    "paths": [
+      "/gpe/parcourts"
+    ],
+    "service": "gpe.services.ListParcourt",
+    "type": "GET"
+  }
+]

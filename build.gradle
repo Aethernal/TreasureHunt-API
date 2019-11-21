@@ -1,0 +1,49 @@
+plugins {
+    id 'java'
+    id "io.spring.dependency-management" version "1.0.7.RELEASE"
+}
+
+group 'aetherion'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.11
+
+repositories {
+
+    maven { url 'https://repo.spring.io/milestone' }
+    mavenCentral()
+
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.12.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+
+    compile 'ch.qos.logback:logback-classic:1.2.3'
+
+    compile 'com.google.code.gson:gson:2.8.5'
+
+    compile "io.projectreactor:reactor-core:3.3.0.M3"
+    testCompile("io.projectreactor:reactor-test:3.3.0.M3")
+
+    compile "io.projectreactor.netty:reactor-netty:0.9.0.M3"
+
+    compile 'org.mongodb:mongodb-driver-reactivestreams:1.12.0'
+}
+
+//task stage(dependsOn: ['build', 'clean'])
+task stage(type: Jar) {
+    manifest {
+        attributes 'Implementation-Title': 'escape-api',
+                'Implementation-Version': version,
+                'Main-Class': 'core.ApiCore'
+    }
+    baseName = project.name
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
+
+
+stage.mustRunAfter clean
