@@ -1,5 +1,6 @@
 package gpe.services;
 
+import core.ApiCore;
 import core.services.json.JsonResponse;
 import core.services.json.JsonService;
 import gpe.bean.Parcourt;
@@ -14,7 +15,7 @@ public class ListParcourt extends JsonService {
 
         return Mono.just(
                 new JsonResponse(200,
-                        Parcourt.getParcourts().collectList()
+                        Parcourt.getParcourts(ApiCore.INSTANCE.getMongo()).collectList()
                 )
         );
 

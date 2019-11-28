@@ -1,5 +1,6 @@
 package gpe.bean;
 
+import com.mongodb.reactivestreams.client.MongoClient;
 import core.ApiCore;
 import reactor.core.publisher.Flux;
 import java.util.List;
@@ -16,7 +17,7 @@ public class Parcourt {
     private List<Etape> etapes;
     private int difficulte;
 
-    public static Flux<Parcourt> getParcourts() {
+    public static Flux<Parcourt> getParcourts(MongoClient client) {
 
         var gson = ApiCore.INSTANCE.getGson();
         var configuration = ApiCore.INSTANCE.getConfiguration();
@@ -24,7 +25,7 @@ public class Parcourt {
         var database = System.getenv(mongoDatabaseKey);
         var collection = configuration.getProperty( mongoParcourtCollectionKey, "parcourt");
 
-        var collectionInstance = ApiCore.INSTANCE.getMongo().getDatabase(database).getCollection(collection);
+        var collectionInstance = client.getDatabase(database).getCollection(collection);
 
         return Flux.from(collectionInstance.find())
                 .map(document -> {

@@ -54,21 +54,8 @@ public class MongoDBTest {
 
     @Test
     public void getParcours() {
-
-            var database = System.getenv(Parcourt.mongoDatabaseKey);
-            var collection = configuration.getProperty(Parcourt.mongoParcourtCollectionKey, "parcourt");
-
-            var collectionInstance = mongo.getDatabase(database).getCollection(collection);
-
-            List<Parcourt> parcours =
-                    Flux.from(collectionInstance.find())
-                    .map(document -> {
-                                var parcourt = gson.fromJson(document.toJson(), Parcourt.class);
-                                parcourt.setIdentifiant(document.getObjectId("_id").toHexString());
-                                return parcourt;
-                            }
-                    ).collectList().block();
-            assert parcours.size() > 0;
+        List<Parcourt> parcours = Parcourt.getParcourts(mongo).collectList().block();
+        assert parcours.size() > 0;
     }
 
 }

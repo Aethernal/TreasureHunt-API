@@ -35,16 +35,13 @@ public enum ApiCore {
 
     private Properties configuration;
     private MongoClient mongo;
-    private Gson gson;
+    private Gson gson = new Gson();
 
     /**
      * Create ApiCore INSTANCE
      * Initialize configuration & json tool
      */
     ApiCore() {
-
-        // Json tool
-        gson = new Gson();
 
         try {
             var fileInput = new FileInputStream(configurationPath);
