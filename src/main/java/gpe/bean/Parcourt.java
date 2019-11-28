@@ -6,8 +6,8 @@ import java.util.List;
 
 public class Parcourt {
 
-    private static final String mongoDatabaseKey = "mongoDatabase";
-    private static final String mongoParcourtCollectionKey = "mongoParcourtCollection";
+    public static final String mongoDatabaseKey = "mongoDatabase";
+    public static final String mongoParcourtCollectionKey = "mongoParcourtCollection";
 
     private String identifiant;
     private Position2D position;

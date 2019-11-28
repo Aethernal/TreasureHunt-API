@@ -20,18 +20,18 @@ import java.util.*;
 public enum ApiCore {
     INSTANCE;
 
-    private static final Logger logger = (Logger) LoggerFactory.getLogger(ApiCore.class);
-    private static final String configurationPath = "config/config.properties";
+    public static final Logger logger = (Logger) LoggerFactory.getLogger(ApiCore.class);
+    public static final String configurationPath = "config/config.properties";
 
     // env variable
-    private static final String mongoHostKey = "mongoHost";
-    private static final String mongoPortKey = "mongoPort";
-    private static final String mongoDBKey = "mongoDB";
-    private static final String mongoUserKey = "mongoUser";
-    private static final String mongoPassKey = "mongoPass";
+    public static final String mongoHostKey = "mongoHost";
+    public static final String mongoPortKey = "mongoPort";
+    public static final String mongoDBKey = "mongoDB";
+    public static final String mongoUserKey = "mongoUser";
+    public static final String mongoPassKey = "mongoPass";
 
     // config
-    private static final String routePathKey = "routePath";
+    public static final String routePathKey = "routePath";
 
     private Properties configuration;
     private MongoClient mongo;
