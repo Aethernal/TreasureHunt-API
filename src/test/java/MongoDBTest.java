@@ -58,7 +58,7 @@ public class MongoDBTest {
             var database = System.getenv(Parcourt.mongoDatabaseKey);
             var collection = configuration.getProperty(Parcourt.mongoParcourtCollectionKey, "parcourt");
 
-            var collectionInstance = ApiCore.INSTANCE.getMongo().getDatabase(database).getCollection(collection);
+            var collectionInstance = mongo.getDatabase(database).getCollection(collection);
 
             List<Parcourt> parcours =
                     Flux.from(collectionInstance.find())
