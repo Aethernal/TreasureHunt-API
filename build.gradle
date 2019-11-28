@@ -36,7 +36,7 @@ dependencies {
 //task stage(dependsOn: ['build', 'clean'])
 task stage(type: Jar) {
     manifest {
-        attributes 'Implementation-Title': 'escape-api',
+        attributes 'Implementation-Title': 'TreasureHuntAR-API',
                 'Implementation-Version': version,
                 'Main-Class': 'core.ApiCore'
     }
