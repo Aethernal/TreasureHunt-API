@@ -1,1 +1,1 @@
-web: java -jar build/libs/escape-api-1.0-SNAPSHOT.jar $PORT
+web: java -jar build/libs/TreasureHuntAR-API-1.0.jar $PORT
