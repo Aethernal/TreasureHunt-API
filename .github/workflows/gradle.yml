@@ -21,5 +21,8 @@ jobs:
         java-package: jdk
         architecture: x64
         
+    - name: Gradle rights
+      run: sudo chmod +x ./gradlew
+      
     - name: Gradle build
       run: ./gradlew build
